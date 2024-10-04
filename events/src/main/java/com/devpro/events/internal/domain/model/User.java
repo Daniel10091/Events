@@ -26,8 +26,8 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(nullable = false)
-  private Integer id;
-  private Integer personId;
+  private Long id;
+  private Long personId;
   private String username;
   private String password;
   private Boolean active;

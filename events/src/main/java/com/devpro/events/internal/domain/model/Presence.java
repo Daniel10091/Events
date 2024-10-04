@@ -26,13 +26,13 @@ public class Presence {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(nullable = false)
-  private Integer id;
+  private Long id;
 
   @Column(name = "event_id", nullable = false)
-  private Integer eventId;
+  private Long eventId;
 
   @Column(name = "person_id", nullable = false)
-  private Integer personId;
+  private Long personId;
 
   @Column(nullable = false)
   private Boolean confirmed;
