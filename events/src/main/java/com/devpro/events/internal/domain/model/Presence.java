@@ -1,6 +1,8 @@
 package com.devpro.events.internal.domain.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -44,6 +46,12 @@ public class Presence {
   private Boolean paid;
 
   private String notes;
+
+  @Column(nullable = false)
+  private LocalDate date;
+
+  @Column(nullable = false)
+  private LocalTime time;
 
   @Column(name = "created_at", nullable = false)
   @CreationTimestamp

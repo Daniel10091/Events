@@ -6,9 +6,12 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,19 +25,27 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Address {
-  
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(nullable = false)
-  private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(nullable = false)
   private Long id;
+  
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "person_id", nullable = false)
+  private Person person;
 
   @Column(nullable = false)
   private String street;
+
+  @Column(nullable = false)
+  private String number;
+
+  @Column(nullable = false)
+  private String complement;
+
+  @Column(nullable = false)
+  private String neighborhood;
 
   @Column(nullable = false)
   private String city;
@@ -44,18 +55,6 @@ public class Address {
 
   @Column(nullable = false)
   private String zipCode;
-
-  @Column(nullable = false)
-  private String country;
-
-  @Column(nullable = false)
-  private String type;
-
-  private String description;
-
-  private String latitude;
-
-  private String longitude;
 
   @Column(name = "created_at", nullable = false)
   @CreationTimestamp
